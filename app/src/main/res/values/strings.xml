@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">App Pool</string>
+    <string name="title_activity_application">Application</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Manage your apps</string>
+    <string name="slide_1_desc">Much faster and in one place</string>
+
+    <string name="slide_2_title">Save your time</string>
+    <string name="slide_2_desc">Just select your frequently used apps and turn on widget n \'Bang\'</string>
+
+    <string name="slide_3_title">All Done!</string>
+    <string name="slide_3_desc">you have just made your life easier!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+
+</resources>
