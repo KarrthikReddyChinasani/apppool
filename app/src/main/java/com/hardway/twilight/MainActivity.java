@@ -38,6 +38,8 @@ import com.hardway.twilight.service.FloatingViewService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final int CODE_DRAW_OVER_OTHER_APP_PERMISSION = 2084;
@@ -130,9 +132,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_menu_view);
         appsList = new ArrayList<>();
         adapter = new AppsAdapter(this, appsList);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 4);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(5), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(5), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         prepareApps();

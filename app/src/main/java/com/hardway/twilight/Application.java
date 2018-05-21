@@ -172,32 +172,6 @@ public class Application extends AppCompatActivity {
     }
 
     private void prepareMovieData() {
-      /*
-        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-        final PackageItemInfo.DisplayNameComparator comparator = new PackageItemInfo.DisplayNameComparator(pm);
-        Collections.sort(packages, new Comparator<ApplicationInfo>() {
-            @Override
-            public int compare(ApplicationInfo lhs, ApplicationInfo rhs)
-            {
-                return comparator.compare(lhs, rhs);
-            }
-        });
-        for (ApplicationInfo packInfo : packages) {
-            String appPackageName = packInfo.packageName;
-            Log.e("Package Manager",appPackageName);
-            if (  (packInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0  || googleApps.contains(appPackageName) )
-            {
-                String appName = packInfo.loadLabel(getPackageManager()).toString();
-                if(appPackageName.equals("com.amazon.appmanager")|| appPackageName.contains("com.samsung"))
-                    continue;
-                apps = new Apps(appName, appPackageName);
-                movieList.add(apps);
-            } else{
-                // Log.e("console", packInfo.applicationInfo.loadLabel(getPackageManager()).toString());
-            }
-         }
-      */
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             List<PackageInfo> packList = getPackageManager().getInstalledPackages(0);
             Apps apps;
@@ -242,6 +216,8 @@ public class Application extends AppCompatActivity {
                 {
                     String appName = packInfo.loadLabel(getPackageManager()).toString();
                     if(appPackageName.equals("com.amazon.appmanager")|| appPackageName.contains("com.samsung"))
+                        continue;
+                    if(appPackageName.contains("com.android"))
                         continue;
                     apps = new Apps(appName, appPackageName);
                     movieList.add(apps);

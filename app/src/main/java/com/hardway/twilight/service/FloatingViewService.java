@@ -68,12 +68,6 @@ public class FloatingViewService extends Service {
     private RecyclerView recyclerView;
     private ApplicationsFloatAdapter mAdapter;
 
-    final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.TYPE_PHONE,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-            PixelFormat.TRANSLUCENT);
 
     public FloatingViewService() {
     }
@@ -89,6 +83,23 @@ public class FloatingViewService extends Service {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         boolean isService = sharedpreferences.getBoolean("serviceOn",true);
        // Toast.makeText(FloatingViewService.this,"Service is on",Toast.LENGTH_LONG).show();
+
+        int LAYOUT_FLAG;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_PHONE;
+        }
+
+
+        final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                LAYOUT_FLAG,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+
+
 
         if(isService) {
             mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
